@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 require('dotenv').config();
 
 const login = async (req, res) => {
-  console.log(req.body)
   if (!req.body.user || !req.body.password) {
     return res.status(400).json({ mensaje: "Debe llenar todos los campos." });
   }
@@ -13,7 +12,7 @@ const login = async (req, res) => {
     if (!user) {
       res
         .status(400)
-        .send({ mensaje: "Error! no existe usuario registrado con este nombre de usuario!" });
+        .send({ mensaje: "Error. No existe usuario registrado con este nombre de usuario" });
       return;
     }
     try {

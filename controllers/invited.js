@@ -33,10 +33,9 @@ const postInvited = async (req, res) => {
 };
 
 const patchInvited = async (req, res) => {
-  console.log(req.body)
   try {
     await Invited.findByIdAndUpdate(req.params.id, req.body)
-    res.status(200).json({ mensaje: "la noticia fue modificada" })
+    res.status(200).json({ mensaje: "Invitacion confirmada" })
   }
   catch (error) {
     res.status(500).json({
