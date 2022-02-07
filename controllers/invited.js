@@ -35,7 +35,11 @@ const postInvited = async (req, res) => {
 const patchInvited = async (req, res) => {
   try {
     await Invited.findByIdAndUpdate(req.params.id, req.body)
-    res.status(200).json({ mensaje: "Invitacion confirmada" })
+    if (req.body.isConfirmed) {
+      res.status(200).json({ mensaje: "Genial! Nos alegramos que estarás presente esa noche" })
+    } else {
+      res.status(200).json({ mensaje: "Que pena! Seguramente encontraremos otro momento para compartir" })
+    }
   }
   catch (error) {
     res.status(500).json({
